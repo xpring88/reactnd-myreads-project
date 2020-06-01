@@ -28,22 +28,19 @@ class SearchPage extends React.Component {
 
   searchBooks = query => {
     BooksAPI.search(query)
-    .then(newBooks => {
-      this.setState({newBooks});
+    .then( newBooks => {
+      this.setState({ newBooks });
     });
   }
 
   render() {
-    //console.log("newBooks" + newBooks)
-	//console.log("newboks" + newboks)
     const { searchBooks, state: { newBooks }, props: { updateBook, books } } = this;
-	//const newboks = this.state.newBooks
 	
 
     return (   
       <div className="search-books">
         <SearchBarAutoComplete searchBooks={searchBooks} suggestionList={suggestionList}/>
-        <SearchResults books={books} newBooks={this.state.newBooks} updateBook={updateBook} />
+        <SearchResults books={books} newBooks={newBooks} updateBook={updateBook} />
       </div>   
     )
   }
